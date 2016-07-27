@@ -10,6 +10,7 @@ import pandas as pd #this is how I usually import pandas
 import sys #only needed to determine Python version number
 import matplotlib #only needed to determine Matplotlib version number
 import os
+import history
 
 folder = "E:\\python\\F4838\\data\\sh600399\\"
 file = "E:\\python\\F4838\\data\\sh600399\\2016-07-21.csv"
@@ -277,17 +278,78 @@ def calPower(file,folder):
         #print (file,format(power,'.2f') +"["+str(mf_buy-mf_sell)+"]"+"\t"+format(mf,'.2f')+format(ping_m,'.2f')+"\t"+format(ic,'.2f')+"\t"+ str(p_all_vol) +"\t"+str(all_buy_vol)+"\t"+str(all_sell_vol)+"\t"+ "\t"+ str(small_bill_cha) + "\t ["+str(m_925)+","+str(m_1000)+","+str(m_1030)+","+str(m_1100)+","+str(m_1130)+","+str(m_1330)+","+str(m_1400)+","+str(m_1430)+","+str(m_1500)+"]" +format(small_rate,'.2f')) 
         #if power>0 and float(tui_rate) > 0 and mf/all_amount > float(tui_rate) and dadan_rate > 0.58 and ping_m/all_amount > mf/all_amount:
         print(outputs)
-
+#统计每笔的收益当天...总和.每笔和收盘价的差额就是盈亏俄.
+def calMoney(sf,sfolder):
+    df = pd.read_csv(sfolder+sf,encoding="gbk",sep="\t")
+    win_money = 0
+    if (df.size > 10):
+        date = sf.split(".")[0];
+        close = float(getClose("600399",date))
+        #print(close,date)
+        for index,row in df.iterrows():
+            v_price = float(row['成交价'])
+            v_vol = int(row['成交量(手)'])
+            v_type = row['性质']
+            win_money = win_money + (close -v_price) * v_vol *100
+            #print(win_money)
+        print(win_money)
+        return win_money
+#统计当天盈利的金额，当天亏损的金额，以及各自的成交量占比.
+def calMoneyVol(sf,sfolder):
+    df = pd.read_csv(sfolder+sf,encoding="gbk",sep="\t")
+    win_money = 0
+    win_vol = 0
+    lose_money = 0
+    lose_vol = 0
+    if (df.size > 10):
+        date = sf.split(".")[0];
+        close = float(getClose("600399",date))
+        #print(close,date)
+        for index,row in df.iterrows():
+            v_price = float(row['成交价'])
+            v_vol = int(row['成交量(手)'])
+            v_type = row['性质']
+            if (v_price <= close):
+                win_money = win_money + (close -v_price) * v_vol *100
+                win_vol += v_vol
+            if (v_price > close) :
+                lose_money = lose_money + (close -v_price) * v_vol *100
+                lose_vol += v_vol
+        if (lose_vol <= 0) :
+            lose_vol = 1;
+        print(win_money,lose_money,win_vol/lose_vol,win_vol,lose_vol)
+        
+#获取某天的收盘价.
+def getClose(numcode,date):
+    closeUrl = "E:\\python\\F4838\\data\\daily\\"+numcode+".csv" 
+    return day_price(date,closeUrl);
+    
 date = "2015-12-30"
 
-#sfolder = "E:\\python\\F4838\\data\\sh"+code+"\\"
-sfolder = "E:\\python\\F4838\\data\\all_temp\\"
+
+
+code = "sh600399";
+codeList = [code];
+load_url = "http://market.finance.sina.com.cn/downxls.php?date=#d#&symbol=#c#"
+folder = "E:\\python\\F4838\\data\\#c#\\"
+save_url = "E:\\python\\F4838\\data\\#c#\\#d#.csv"  
+
+#1.下载
+#downloads_daily(codeList,save_url,load_url,"2016-6-1","2016-7-26",folder)  
+
+sfolder = "E:\\python\\F4838\\data\\"+code+"\\"
+#sfolder = "E:\\python\\F4838\\data\\all_temp\\"
+#2.下载的文件列表
 filelist = os.listdir(sfolder)
 print(filelist)
+#3.统计分析
 for sf in filelist:
     #bo_in_day([90000,155959],folder+sf)
-    print(sf)
+    #print(sf)
     calPower(sf,sfolder)
+    #当天盈亏总和.
+    win_money = calMoney(sf,sfolder)
+    calMoneyVol(sf,sfolder)
 file617 = "E:\\python\\F4838\\data\\sh600399\\2016-06-17.csv"
 file624 = "E:\\python\\F4838\\data\\sh600399\\2016-06-24.csv"
 file3 = "E:\\python\\F4838\\data\\sh600399\\2016-06-29.csv"

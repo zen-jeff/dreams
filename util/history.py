@@ -162,9 +162,9 @@ def download_history_price(codeList,save_url,load_url,date_from,date_to,folder):
     print(1)
     
 """
-codeList = ["sz002535"]
+codeList = ["sh600399"]
 load_url = "http://market.finance.sina.com.cn/downxls.php?date=#d#&symbol=#c#"
 folder = "E:\\python\\F4838\\data\\#c#\\"
 save_url = "E:\\python\\F4838\\data\\#c#\\#d#.csv"  
-downloads_daily(codeList,save_url,load_url,"2016-7-1","2016-7-22",folder)  
-   """ 
+downloads_daily(codeList,save_url,load_url,"2016-7-1","2016-7-26",folder)  
+"""
