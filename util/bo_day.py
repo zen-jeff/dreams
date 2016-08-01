@@ -284,6 +284,9 @@ def calMoney(sf,sfolder):
     win_money = 0
     if (df.size > 10):
         date = sf.split(".")[0];
+        #if (date == "2016-07-27"):
+            #close= 6.79
+        #else:
         close = float(getClose("600399",date))
         #print(close,date)
         for index,row in df.iterrows():
@@ -303,7 +306,10 @@ def calMoneyVol(sf,sfolder):
     lose_vol = 0
     if (df.size > 10):
         date = sf.split(".")[0];
-        close = float(getClose("600399",date))
+        if (date == "2016-07-27"):
+            close= 6.79
+        else:
+            close = float(getClose("600399",date))
         #print(close,date)
         for index,row in df.iterrows():
             v_price = float(row['成交价'])
@@ -335,7 +341,7 @@ folder = "E:\\python\\F4838\\data\\#c#\\"
 save_url = "E:\\python\\F4838\\data\\#c#\\#d#.csv"  
 
 #1.下载
-#downloads_daily(codeList,save_url,load_url,"2016-6-1","2016-7-26",folder)  
+downloads_daily(codeList,save_url,load_url,"2016-7-27","2016-8-1",folder)  
 
 sfolder = "E:\\python\\F4838\\data\\"+code+"\\"
 #sfolder = "E:\\python\\F4838\\data\\all_temp\\"
