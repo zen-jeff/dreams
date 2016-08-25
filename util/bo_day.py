@@ -334,38 +334,39 @@ date = "2015-12-30"
 
 
 
-code = "sh600399";
-codeList = [code];
+'''
+多空双方的实力.
+每季度的基金持股..
+'''
+code = "sh600399";#"sh600797""sh600399",#
+codeList = ["sh600399","sz000768","sh600685","sh601989"];
 load_url = "http://market.finance.sina.com.cn/downxls.php?date=#d#&symbol=#c#"
 folder = "E:\\python\\F4838\\data\\#c#\\"
 save_url = "E:\\python\\F4838\\data\\#c#\\#d#.csv"  
 
 #1.下载
-downloads_daily(codeList,save_url,load_url,"2016-7-27","2016-8-1",folder)  
+#downloads_daily(codeList,save_url,load_url,"2016-8-18","2016-8-23",folder)  
 
-sfolder = "E:\\python\\F4838\\data\\"+code+"\\"
+
+#sfolder = "E:\\python\\F4838\\data\\"+code+"\\"
 #sfolder = "E:\\python\\F4838\\data\\all_temp\\"
 #2.下载的文件列表
 filelist = os.listdir(sfolder)
 print(filelist)
 #3.统计分析
-for sf in filelist:
-    #bo_in_day([90000,155959],folder+sf)
-    #print(sf)
-    calPower(sf,sfolder)
-    #当天盈亏总和.
-    win_money = calMoney(sf,sfolder)
-    calMoneyVol(sf,sfolder)
-file617 = "E:\\python\\F4838\\data\\sh600399\\2016-06-17.csv"
-file624 = "E:\\python\\F4838\\data\\sh600399\\2016-06-24.csv"
-file3 = "E:\\python\\F4838\\data\\sh600399\\2016-06-29.csv"
-file4 = "E:\\python\\F4838\\data\\sh600399\\"+date+".csv"
-"""
-bo_in_day([90000,101559],file617)
-bo_in_day([101559,155959],file617)
-bo_in_day([90000,130559],file624)
-bo_in_day([130559,155959],file624)
-bo_in_day([90000,101059],file3)
-bo_in_day([101059,155959],file3)
-"""
+for code in codeList:
+    #1.下载
+    downloads_daily([code],save_url,load_url,"2016-8-24","2016-8-25",folder)  
+    
+    sfolder = "E:\\python\\F4838\\data\\"+code+"\\"   
+    
+    filelist = os.listdir(sfolder)
+    for sf in filelist:
+        #bo_in_day([90000,155959],folder+sf)
+        #print(sf)
+        calPower(sf,sfolder)
+        #当天盈亏总和.
+        #win_money = calMoney(sf,sfolder)
+        #calMoneyVol(sf,sfolder)
+    
 

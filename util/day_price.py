@@ -6,7 +6,7 @@ from urllib import request
 #http://table.finance.yahoo.com/table.csv?s=600000.ss    
 #http://table.finance.yahoo.com/table.csv?s=000001.sz
 
-code = "600399";
+code = "600399" #"600399";
 load_url = "http://table.finance.yahoo.com/table.csv?s="+code+".ss "
 save_url = "E:\\python\\F4838\\data\\daily\\"+code+".csv" 
 download_now(load_url,save_url)

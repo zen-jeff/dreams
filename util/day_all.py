@@ -86,6 +86,6 @@ load_url = "http://market.finance.sina.com.cn/downxls.php?date=#d#&symbol=#c#"
 folder = "E:\\python\\F4838\\data\\all_temp\\"
 save_url = "E:\\python\\F4838\\data\\all_temp\\#c#___#d#.csv"  
 
-downloads_daily_single(codeList,save_url,load_url,"2016-7-22","2016-7-22",folder) 
-downloads_daily_single(codeList1,save_url,load_url,"2016-7-22","2016-7-22",folder) 
-downloads_daily_single(codeList2,save_url,load_url,"2016-7-22","2016-7-22",folder) 
+downloads_daily_single(codeList,save_url,load_url,"2016-8-22","2016-8-22",folder) 
+downloads_daily_single(codeList1,save_url,load_url,"2016-8-22","2016-8-22",folder) 
+downloads_daily_single(codeList2,save_url,load_url,"2016-8-22","2016-8-22",folder) 

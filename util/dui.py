@@ -20,11 +20,11 @@ codeList = [code]
 load_url = "http://market.finance.sina.com.cn/downxls.php?date=#d#&symbol=#c#"
 folder = "E:\\python\\F4838\\data\\#c#\\"
 save_url = "E:\\python\\F4838\\data\\#c#\\#d#.csv"  
-downloads_daily(codeList,save_url,load_url,"2016-7-1","2016-7-22",folder)  
+#downloads_daily(codeList,save_url,load_url,"2016-7-1","2016-7-22",folder)  
 
 
-#folder = "E:\\python\\F4838\\data\\all_temp\\"
-folder = "E:\\python\\F4838\\data\\"+code+"\\"
+folder = "E:\\python\\F4838\\data\\all_temp\\"
+#folder = "E:\\python\\F4838\\data\\"+code+"\\"
 filelist = os.listdir(folder)
 print(filelist)
 print ("日期-00-00.csv","power"+"\t"+"成交量"+"\t"+"连续买入量"+"\t"+"连续卖出量"+"\t"+"小单差"+"\t"+"小单买入量"+"\t"+"四个点的价格"+"\t"+"小单比例")         
@@ -188,7 +188,8 @@ def calPower(file,folder):
         #if (mf_buy-mf_sell)>0 and mf >0 and ping_m >0:
         #print (file,format(power,'.2f') +"["+str(mf_buy-mf_sell)+"]"+"\t"+format(mf,'.2f')+format(ping_m,'.2f')+"\t"+format(ic,'.2f')+"\t"+ str(p_all_vol) +"\t"+str(all_buy_vol)+"\t"+str(all_sell_vol)+"\t"+ "\t"+ str(small_bill_cha) + "\t ["+str(m_925)+","+str(m_1000)+","+str(m_1030)+","+str(m_1100)+","+str(m_1130)+","+str(m_1330)+","+str(m_1400)+","+str(m_1430)+","+str(m_1500)+"]" +format(small_rate,'.2f')) 
         #if power>0 and float(tui_rate) > 0 and mf/all_amount > float(tui_rate) and dadan_rate > 0.58 and ping_m/all_amount > mf/all_amount:
-        print(outputs)
+        if (dadan_rate > 2):
+            print(outputs)
               
          
 for file in filelist: 
