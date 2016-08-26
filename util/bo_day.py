@@ -356,7 +356,7 @@ print(filelist)
 #3.统计分析
 for code in codeList:
     #1.下载
-    downloads_daily([code],save_url,load_url,"2016-8-24","2016-8-25",folder)  
+    downloads_daily([code],save_url,load_url,"2016-8-25","2016-8-26",folder)  
     
     sfolder = "E:\\python\\F4838\\data\\"+code+"\\"   
     
