@@ -351,12 +351,12 @@ save_url = "E:\\python\\F4838\\data\\#c#\\#d#.csv"
 #sfolder = "E:\\python\\F4838\\data\\"+code+"\\"
 #sfolder = "E:\\python\\F4838\\data\\all_temp\\"
 #2.下载的文件列表
-filelist = os.listdir(sfolder)
-print(filelist)
+#filelist = os.listdir(sfolder)
+#print(filelist)
 #3.统计分析
 for code in codeList:
     #1.下载
-    downloads_daily([code],save_url,load_url,"2016-8-25","2016-8-26",folder)  
+    downloads_daily([code],save_url,load_url,"2016-9-1","2016-9-2",folder)  
     
     sfolder = "E:\\python\\F4838\\data\\"+code+"\\"   
     
