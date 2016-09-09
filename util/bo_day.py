@@ -337,9 +337,11 @@ date = "2015-12-30"
 '''
 多空双方的实力.
 每季度的基金持股..
+双汇发展,中航飞机.
 '''
 code = "sh600399";#"sh600797""sh600399",#
-codeList = ["sh600399","sz000768","sh600685","sh601989"];
+codeList = ["sh600399","sz000768","sh600685","sh601989","sh600418"];
+
 load_url = "http://market.finance.sina.com.cn/downxls.php?date=#d#&symbol=#c#"
 folder = "E:\\python\\F4838\\data\\#c#\\"
 save_url = "E:\\python\\F4838\\data\\#c#\\#d#.csv"  
@@ -356,7 +358,7 @@ save_url = "E:\\python\\F4838\\data\\#c#\\#d#.csv"
 #3.统计分析
 for code in codeList:
     #1.下载
-    downloads_daily([code],save_url,load_url,"2016-9-1","2016-9-2",folder)  
+    downloads_daily([code],save_url,load_url,"2016-9-7","2016-9-9",folder)  
     
     sfolder = "E:\\python\\F4838\\data\\"+code+"\\"   
     
