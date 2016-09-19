@@ -358,7 +358,7 @@ save_url = "E:\\python\\F4838\\data\\#c#\\#d#.csv"
 #3.统计分析
 for code in codeList:
     #1.下载
-    downloads_daily([code],save_url,load_url,"2016-9-7","2016-9-9",folder)  
+    downloads_daily([code],save_url,load_url,"2016-9-9","2016-9-13",folder)  
     
     sfolder = "E:\\python\\F4838\\data\\"+code+"\\"   
     
